@@ -1,0 +1,100 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Readex+Pro:wght@400;500;600&family=Tajawal:wght@400;500;700;800&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+body {
+  background-color: #faf7f0;
+  color: #2b2f36;
+  font-family: 'Cairo', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+em,
+i {
+  font-style: normal;
+}
+:focus-visible {
+  outline: 3px solid #1f6f7c;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============ Accessibility system (only active when the user turns something on) ============ */
+html[data-a11y-font='simple'] #root,
+html[data-a11y-font='simple'] #root * {
+  font-family: 'Readex Pro', 'Cairo', system-ui, sans-serif !important;
+}
+html[data-a11y-font='bold'] #root,
+html[data-a11y-font='bold'] #root * {
+  font-family: 'Tajawal', 'Cairo', system-ui, sans-serif !important;
+  font-weight: 700;
+}
+
+html[data-a11y-lh] #root :where(p, li, label, dd, blockquote, td, th) {
+  line-height: var(--a11y-lh) !important;
+}
+html[data-a11y-ls] #root,
+html[data-a11y-ls] #root * {
+  letter-spacing: var(--a11y-ls);
+  word-spacing: var(--a11y-ws);
+}
+
+html[data-a11y-bg='white'] body,
+html[data-a11y-bg='white'] [class*='bg-cream'] {
+  background-color: #ffffff !important;
+}
+html[data-a11y-bg='gray'] body,
+html[data-a11y-bg='gray'] [class*='bg-cream'] {
+  background-color: #eceef0 !important;
+}
+html[data-a11y-bg='dark'] #root img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html[data-a11y-calm] #root *,
+html[data-a11y-calm] #root *::before,
+html[data-a11y-calm] #root *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-a11y-keyboard] :focus-visible {
+  outline: 4px solid #f2a65a !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 8px rgba(31, 111, 124, 0.45) !important;
+}
+html[data-a11y-keyboard] #root a,
+html[data-a11y-keyboard] #root button {
+  min-height: 44px;
+}
+
+@keyframes a11y-wave {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+.a11y-wave {
+  animation: a11y-wave 0.9s ease-in-out infinite;
+  transform-origin: center;
+}

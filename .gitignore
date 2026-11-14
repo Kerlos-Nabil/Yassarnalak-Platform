@@ -8,11 +8,23 @@
 # 1. Environment & Secrets (NEVER commit credentials, keys, or local secrets)
 # ------------------------------------------------------------------------------
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 *.local
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.Local.json
 appsettings.*.local.json
+!appsettings.json
+!appsettings.example.json
 secrets.json
+
+# Certificates, Keys & Private Credentials
+*.pfx
+*.p12
+*.pem
+*.key
+*.cer
 
 # ------------------------------------------------------------------------------
 # 2. Frontend (Node.js, React, Vite, TypeScript, PNPM / NPM / Yarn)
@@ -57,10 +69,15 @@ coverage/
 # Build outputs (Debug, Release, x86, x64, Any CPU)
 [Bb]in/
 [Oo]bj/
+[Dd]ebug/
+[Rr]elease/
 [Ll]og/
 [Ll]ogs/
+*.log
 publish/
 Publish/
+[Tt]emp/
+[Tt]mp/
 
 # Visual Studio & MSBuild generated files
 *.suo
@@ -70,6 +87,7 @@ Publish/
 *.userprefs
 *.dbmdl
 *.jfm
+*.cache
 
 # Visual Studio temporary & cache directories
 .vs/
@@ -103,6 +121,7 @@ TestResults/
 *.sqlite-journal
 *.mdf
 *.ldf
+*.bak
 
 # .NET Core / ASP.NET tools
 .dotnet/

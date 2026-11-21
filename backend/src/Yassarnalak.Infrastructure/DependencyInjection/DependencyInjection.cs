@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Yassarnalak.Application.Interfaces;
 using Yassarnalak.Domain.Entities;
 using Yassarnalak.Infrastructure.Persistence.Context;
+using Yassarnalak.Infrastructure.Repositories;
 
 namespace Yassarnalak.Infrastructure.DependencyInjection;
 
@@ -34,7 +35,7 @@ public static class DependencyInjection
         })
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<ApplicationDbContext>();
-
+        services.AddScoped<IDoctorRepository, DoctorRepository>();
         return services;
     }
 }

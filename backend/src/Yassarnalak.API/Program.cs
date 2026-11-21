@@ -1,3 +1,4 @@
+using Yassarnalak.API.Extensions;
 using Yassarnalak.Application.Common;
 using Yassarnalak.Infrastructure.DependencyInjection;
 
@@ -8,15 +9,16 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+
+// Swagger Documentation
+builder.Services.AddSwaggerServices();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwaggerConfiguration();
 }
 
 app.UseHttpsRedirection();

@@ -301,10 +301,10 @@ No member waits for another here. Use fakes where noted.
 - A calculator (pure functions) that, from a list of attempts, produces:
   - **Accuracy** = correct answers ÷ total answers.
   - **Per-skill accuracy** (spelling, reading, ...).
-  - **Weak area:** a skill with accuracy below a threshold **and** a minimum number of attempts. Suggested starting point: below 60% with at least 5 attempts. The minimum matters: one wrong answer must not label a child as weak at something.
-  - **Strong area:** a skill at or above a higher threshold (suggested 80%).
+  - **Weak area:** a skill with accuracy below a threshold determined by the doctor **and** a minimum number of attempts. The minimum matters: one wrong answer must not label a child as weak at something.
+  - **Strong area:** a skill at or above a threshold determined by the doctor.
   - **Trend:** accuracy per week, or last N attempts compared with the N before. Output "improving", "stable" or "declining" plus the data points for a chart.
-- Keep thresholds in one configuration object. Confirm the numbers with a specialist, since the reference defines a weak area as "consistently low".
+- Keep thresholds in one configuration object, determined by the doctor, since the reference defines a weak area as "consistently low".
 
 **Watch out:** Handle empty lists and a single attempt without crashing or showing nonsense.
 
@@ -967,14 +967,6 @@ No member waits for another here. Use fakes where noted.
 - **Endpoints:** `GET /api/admin/analytics/overview`, `GET /api/admin/analytics/timeseries?metric=`
 - [ ] Overview numbers and time-series charts
 
-#### Member 2: T2.6 Awareness quiz
-- **What it is:** a short quiz for visitors and parents about what they have noticed in a child. It ends with guidance, **never a diagnosis** (rule 1).
-- **On the website:** 8 to 10 simple questions (for example "Does the child often confuse similar letters?") with answers like yes, sometimes, no. The result page never says "you have" or "your child has". It says what was noticed, always ends with **"talk to a doctor,"** and links to the relevant guide articles and the directory.
-- **Behind the scenes:** store questions as **data** with a category per question, so a specialist can change them without code. Evaluation is stateless (nothing saved for visitors). Questions and wording must be reviewed by a specialist.
-- **Endpoints:** `GET /api/quiz`, `POST /api/quiz/evaluate`
-- [ ] Questions as data, specialist-reviewed
-- [ ] Result always ends with "talk to a doctor" and links
-
 #### Member 3: T3.6 Templates for other difficulties
 - **What it is:** exercise templates for writing (dysgraphia), math (dyscalculia), and attention and processing.
 - **On the website:** the template picker in the exercise form shows new cards. Add **one template at a time**, each reviewed by a specialist.
@@ -1109,4 +1101,3 @@ Each task got a **relative effort weight** (a rough size, not hours). The percen
 - These are **estimates**. Re-weigh the tasks after the first wave, when you know how fast your team really works, and update the percentages.
 - The percentages cover **feature work only**. They do **not** include bug fixing, polishing the Arabic UI, documentation, deployment, or exam and holiday weeks. A sensible reserve is **15 to 20% extra time** on top.
 - **67% at Gate 3 is your MVP.** If time runs short, finishing Gate 3 and polishing it is better than half-finishing Phase 2.
-- Member 3 carries the most weight in the core phase; Member 5 has the lightest core load, so Member 5 should help review and unblock others.
